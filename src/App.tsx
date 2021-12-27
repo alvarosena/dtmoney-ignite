@@ -1,15 +1,32 @@
 import { useState } from "react";
+import Modal from 'react-modal';
+import { Header } from "./components/Header";
+import { GlobalStyle } from './styles/global';
+import { Dashboard } from './components/Dashboard/index';
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+
+  const handleOpenNewTransactionModalOpen = () => {
+    setIsNewTransactionModalOpen(true);
+  }
+
+  const handleCloseNewTransactionModalOpen = () => {
+    setIsNewTransactionModalOpen(false);
+  }
 
   return (
-    <div className="App">
-      <h1>{counter}</h1>
-      <button onClick={() => {
-        setCounter(counter + 1);
-      }}>+</button>
-    </div>
+    <>
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModalOpen} />
+      <Dashboard />
+
+
+      <Modal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModalOpen}>
+        <h1>Register new transaction</h1>
+      </Modal>
+
+      <GlobalStyle />
+    </>
   );
 }
 

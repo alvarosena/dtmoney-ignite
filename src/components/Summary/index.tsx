@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import icomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 import totalImg from '../../assets/total.svg';
 
 import { Container } from './styles';
-
 function Summary() {
   return (
     <Container>
